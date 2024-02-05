@@ -1,0 +1,180 @@
+\documentclass[aspectratio=169]{beamer}
+
+% Packages: 
+\usepackage{hyperref,comment}
+\usepackage[T1]{fontenc}
+\usepackage{pgfpages}
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra,multirow}
+\usepackage{graphicx,listings,stackengine}
+\usepackage[labelsep=period]{subcaption}
+\usepackage{TemplateSetup}
+\usepackage[justification=centering]{caption}
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+
+% ------------------------------------------------------
+
+% <<--------------- TO BE MODIFIED --------------->>
+\author{Name Surname}
+\newcommand\supervisorA{Name Surname}
+\newcommand\supervisorB{Name Surname}
+\newcommand\supervisorC{Name Surname}
+\title{Title of the presentation}
+
+% ------------------------------------------------------
+
+\institute{Polytechnique de Montr\'eal - LM2}
+\date{\today}
+
+%-------------------------------------------------------
+
+% Color and Text Properties: 
+\definecolor{polyblue}{HTML}{41AAE6}
+\definecolor{polygreen}{HTML}{8CC83C}
+\definecolor{polyorange}{HTML}{FA961E}
+\definecolor{polyred}{HTML}{B91E32}
+\definecolor{darkgray}{RGB}{35,31,32}
+
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{author}{fg=black}
+
+\setbeamerfont{title}{size=\fontsize{14pt}{5},series=\bfseries}
+\setbeamerfont{author}{size=\fontsize{12pt}{3},series=\bfseries}
+\setbeamerfont{caption}{size=\fontsize{10pt}{3}}
+%\setbeameroption{show notes on second screen}
+
+%-------------------------------------------------------
+
+% Lines needed to change the margins in the title page
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{#1}%
+\setlength{\rightmargin}{#2}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
+
+%-------------------------------------------------------
+
+% Title Page Properties: 
+\defbeamertemplate*{title page}{customized}[1][]
+{
+\vspace{-1.25cm}
+\begin{changemargin}{0cm}{0cm}
+\centering
+{\usebeamerfont{title}\usebeamercolor[fg]{title}\LARGE\inserttitle}
+\end{changemargin}
+\vspace{1.25cm}
+{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor} \\
+\vspace{.25cm}
+{Under the supervision of:} \\
+{\begin{itemize}
+\item \supervisorA
+\item \supervisorB
+\item \supervisorC
+\end{itemize}}
+\vspace{.25cm}
+{\insertdate}
+}
+
+%------------------------------------------------------
+
+% Page numbers for appendices
+\newcommand{\appendicesbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\appendicesend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+
+%------------------------------------------------------
+
+% Bibliography
+\usepackage[backend=biber,style=numeric,citestyle=numeric,sorting=anyt]{biblatex}
+\addbibresource{bib.bib}
+
+%------------------------------------------------------
+
+\begin{document}
+\beamertemplatenavigationsymbolsempty
+
+%=============== Title page ====================
+{
+\usebackgroundtemplate{%
+\begin{picture}(\paperwidth,\paperheight)
+\put(0,206.5){\begin{tikzpicture}
+\draw [draw=darkgray,fill=darkgray] (0,0) rectangle (\paperwidth,17);
+\end{tikzpicture}}
+\put(20,195){\begin{tikzpicture}
+\draw[draw=darkgray,fill=darkgray] (0,0) -- (3,0);
+\end{tikzpicture}}
+\put(0,32){\includegraphics[width=.45\paperwidth,left=\paperwidth]{Logos-Poly-LM2-Impact_gauche-left_noir-black.pdf}}
+\put(0,40){\includegraphics[width=.55\paperwidth,right=\paperwidth]{Polytechnique_Montréal.jpg}} % <<--- Insert an image of your project
+\end{picture}}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+}
+
+%=============== Table of contents ====================
+\begin{frame}{Plan}
+\tableofcontents
+\end{frame}
+
+% <<--------------- TO BE MODIFIED --------------->>
+
+%=============== Introduction ====================
+\section{Introduction}
+
+\begin{frame}{Introduction}
+
+\end{frame}
+
+%=============== Methodology ====================
+\section{Methodology}
+
+\begin{frame}{Methodology}
+
+\end{frame}
+
+%=============== Results ====================
+\section{Results}
+
+\begin{frame}{Results}
+
+\end{frame}
+
+%=============== Discussion ====================
+\section{Discussion}
+
+\begin{frame}{Discussion}
+
+\end{frame}
+
+%=============== Conclusion ====================
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+
+\end{frame}
+
+\appendicesbegin
+
+%=============== References ====================
+\section{References}
+\begin{frame}[allowframebreaks]
+\frametitle{References}
+\printbibliography[heading=none]
+\end{frame}
+
+%=============== Appendices ====================
+\section{Appendices}
+\begin{frame}{Appendices}
+\end{frame}
+
+\appendicesend
+\end{document}
