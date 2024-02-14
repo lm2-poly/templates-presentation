@@ -1,11 +1,11 @@
 \documentclass[aspectratio=169]{beamer}
 
-% Packages: 
+% Packages / modules : 
 \usepackage{hyperref,comment}
 \usepackage[T1]{fontenc}
 \usepackage{pgfpages}
 \usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra,multirow}
-\usepackage{graphicx,listings,stackengine}
+\usepackage{graphicx,stackengine}
 \usepackage[labelsep=period]{subcaption}
 \usepackage{TemplateSetup}
 \usepackage[justification=centering]{caption}
@@ -14,21 +14,50 @@
 
 % ------------------------------------------------------
 
-% <<--------------- TO BE MODIFIED --------------->>
+% <<--------------- TO BE MODIFIED / A MODIFIER --------------->>
+% Choice of the language / choix de la langue
+\newcommand\Language{english}
+
+% ------------------------------------------------------
+
+% Package for the typographical rules of the language used
+% Module pour les règles typographiques de la langue utilisée
+\usepackage{ifthen}
+\ifthenelse{\equal{\Language}{english}}{
+\usepackage[french,english]{babel}
+}{
+\usepackage[english,french]{babel} 
+}
+
+\usepackage{csquotes,listings}
+
+% ------------------------------------------------------
+
+% <<--------------- TO BE MODIFIED / A MODIFIER --------------->>
+% Author, supervisor(s), title / auteur, superviseur.e.s, titre
+\ifthenelse{\equal{\Language}{english}}{
 \author{Name Surname}
 \newcommand\supervisorA{Name Surname}
 \newcommand\supervisorB{Name Surname}
 \newcommand\supervisorC{Name Surname}
 \title{Title of the presentation}
+}{
+\author{Prénom Nom}
+\newcommand\supervisorA{Prénom Nom}
+\newcommand\supervisorB{Prénom Nom}
+\newcommand\supervisorC{Prénom Nom}
+\title{Titre de la présentation}
+}
 
 % ------------------------------------------------------
 
-\institute{Polytechnique de Montr\'eal - LM2}
+% Institute and date / institut et date
+\institute{Polytechnique Montréal - LM2}
 \date{\today}
 
 %-------------------------------------------------------
 
-% Color and Text Properties: 
+% Color and text properties / Propriétes de couleurs et texte 
 \definecolor{polyblue}{HTML}{41AAE6}
 \definecolor{polygreen}{HTML}{8CC83C}
 \definecolor{polyorange}{HTML}{FA961E}
@@ -45,7 +74,8 @@
 
 %-------------------------------------------------------
 
-% Lines needed to change the margins in the title page
+% Change of the margins in the title page
+% Changement des marges dans la page titre
 \newenvironment{changemargin}[2]{%
 \begin{list}{}{%
 \setlength{\topsep}{0pt}%
@@ -59,7 +89,7 @@
 
 %-------------------------------------------------------
 
-% Title Page Properties: 
+% Title page properties / propriétés de la page titre
 \defbeamertemplate*{title page}{customized}[1][]
 {
 \vspace{-1.25cm}
@@ -70,7 +100,11 @@
 \vspace{1.25cm}
 {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor} \\
 \vspace{.25cm}
-{Under the supervision of:} \\
+\ifthenelse{\equal{\Language}{english}}{
+{Under the supervision of:}
+}{
+{Sous la supervision de :}
+}\\
 {\begin{itemize}
 \item \supervisorA
 \item \supervisorB
@@ -82,7 +116,7 @@
 
 %------------------------------------------------------
 
-% Page numbers for appendices
+% Page numbers for appendices / Numéros de page pour les annexes
 \newcommand{\appendicesbegin}{
    \newcounter{finalframe}
    \setcounter{finalframe}{\value{framenumber}}
@@ -93,16 +127,18 @@
 
 %------------------------------------------------------
 
-% Bibliography
+% Bibliography / bibliographie
+% To change if desired / à changer si besoin
 \usepackage[backend=biber,style=numeric,citestyle=numeric,sorting=anyt]{biblatex}
 \addbibresource{bib.bib}
 
 %------------------------------------------------------
 
 \begin{document}
+% Can be removed if needed / peut être enlevé si besoin
 \beamertemplatenavigationsymbolsempty
 
-%=============== Title page ====================
+%=============== Title page / Page titre ====================
 {
 \usebackgroundtemplate{%
 \begin{picture}(\paperwidth,\paperheight)
@@ -120,12 +156,12 @@
 \end{frame}
 }
 
-%=============== Table of contents ====================
+%=============== Table of contents / Table des matières ====================
 \begin{frame}{Plan}
 \tableofcontents
 \end{frame}
 
-% <<--------------- TO BE MODIFIED --------------->>
+% <<--------------- TO BE MODIFIED / A MODIFIER --------------->>
 
 %=============== Introduction ====================
 \section{Introduction}
@@ -162,19 +198,35 @@
 
 \end{frame}
 
+% <<--------------- NO CHANGE NECESSARY BEYOND THIS POINT --------------->>
+% <<--------------- Pas de changement nécessaire après --------------->>
 \appendicesbegin
 
-%=============== References ====================
+%=============== References / Références ====================
+\ifthenelse{\equal{\Language}{english}}{
 \section{References}
 \begin{frame}[allowframebreaks]
 \frametitle{References}
 \printbibliography[heading=none]
 \end{frame}
-
-%=============== Appendices ====================
-\section{Appendices}
-\begin{frame}{Appendices}
+}{
+\section{Références}
+\begin{frame}[allowframebreaks]
+\frametitle{Références}
+\printbibliography[heading=none]
 \end{frame}
+}
+
+%=============== Appendices / Annexes ====================
+\ifthenelse{\equal{\Language}{english}}{
+\section{Appendices}
+\begin{frame}{Appendix}
+\end{frame}
+}{
+\section{Annexes}
+\begin{frame}{Annexe}
+\end{frame}
+}
 
 \appendicesend
 \end{document}
