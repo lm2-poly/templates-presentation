@@ -12,7 +12,7 @@ Le patron dispose également de deux macros (d'où l'extension ```.pptm```) pour
 
 ## Beamer
 
-Le patron Beamer est disponible en anglais, avec fond blanc, mais le changement pour le français est facile à exécuter. Celui-ci est adapté d'un patron libre d'accès, basé sur le format Berlin.
+Le patron Beamer est disponible en anglais et français, avec fond blanc, ce qui peut être spécifié au début du fichier ```.tex```. Celui-ci est adapté d'un patron libre d'accès, basé sur le format Berlin.
 
 ---
 
@@ -28,4 +28,4 @@ The template has two macros (hence the ```.pptm``` extension) for the creation a
 
 ## Beamer
 
-The Beamer template is available in English, with white background, but the change to French is straightforward. It is adapted from an open access template, based on the Berlin format.
+The Beamer template is available in English and French, with white background, which can be specified at te beginning of the ```.tex``` file. It is adapted from an open access template, based on the Berlin format.
