@@ -14,7 +14,7 @@ Le patron dispose également de deux macros (d'où l'extension ```.pptm```) pour
 
 Le patron Beamer est disponible en anglais, avec fond blanc, mais le changement pour le français est facile à exécuter. Celui-ci est adapté d'un patron libre d'accès, basé sur le format Berlin.
 
-""""-----------------------""""
+---
 
 The templates are available for PowerPoint and Beamer (Latex).
 
